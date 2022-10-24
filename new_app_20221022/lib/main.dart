@@ -10,15 +10,35 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('준비완료!'),
+          backgroundColor: Colors.white,
+          centerTitle: false,
+          titleTextStyle: TextStyle(
+            color: Colors.pink,
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
+          title: Text(
+            '테디피셜',
+          ),
+          elevation: 0,
         ),
         body: ListView(
           children: [
-            Text('asasdf'),
-            Text('asasdf'),
-            Text('asasdf'),
-            Text('asasdf'),
-            Text('asasdf'),
+            ListTile(
+              title: Text(
+                '공지사항',
+                style: TextStyle(
+                    color: Colors.red,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold),
+              ),
+              subtitle: Text('반갑습니다 여러분'),
+              leading: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Icon(Icons.announcement),
+              ),
+              trailing: Icon(Icons.navigate_next),
+            ),
           ],
         ),
       ),
