@@ -1,38 +1,30 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  var myLevel = 1;
-
-  @override
   Widget build(BuildContext context) {
-    print('빌드가 되었습니다 $myLevel');
+    var names = ['김진욱', '이테디', '유아인', '몽몽', '크롱', '릭', '내 친구1', '내 친구2'];
+
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'Have a nice day!',
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
-        ),
-        body: Center(
-          child: Text('내 현재 레벨은 : $myLevel 입니다'),
-        ),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
-          onPressed: () {
-            myLevel += 1;
-            print('내 현재 레벨은 : $myLevel 입니다');
+        appBar: AppBar(),
+        body: ListView.builder(
+          itemCount: names.length, // 8
+          itemBuilder: (context, index) {
+            return ListTile(
+              title: Text('${index + 1}위 ${names[index]}'),
+              subtitle: Text('010-0000-0000'),
+              leading: CircleAvatar(
+                child: Icon(Icons.person),
+              ),
+              trailing: Icon(Icons.call),
+            );
           },
         ),
       ),
