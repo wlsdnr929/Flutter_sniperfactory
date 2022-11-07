@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:secret_cat_sdk/api/api.dart';
 
 class SecretPage extends StatelessWidget {
   const SecretPage({super.key});
@@ -13,48 +14,47 @@ class SecretPage extends StatelessWidget {
         titleSpacing: 0,
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
+        // leading: IconButton(
+        //   icon: Icon(Icons.arrow_back),
+        //   onPressed: () {
+        //     Navigator.pop(context);
+        //   },
+        // ),
         title: Text(
           '돌아가기',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
       body: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-              image: NetworkImage(imgUrl),
-              fit: BoxFit.cover,
-              colorFilter: ColorFilter.mode(
-                  Colors.black.withOpacity(0.4), BlendMode.darken)),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Image.asset('assets/tiger.png'),
-            const SizedBox(
-              height: 32,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: NetworkImage(imgUrl),
+                fit: BoxFit.cover,
+                colorFilter: ColorFilter.mode(
+                    Colors.black.withOpacity(0.6), BlendMode.darken)),
+          ),
+          child: Center(
+            child: FutureBuilder(
+              future: fetchSecrets(),
+              builder: (context, snapshot) {
+                print(snapshot.data?.first.secret);
+
+                return snapshot.connectionState == ConnectionState.done
+                    ? PageView.builder(
+                        itemCount: snapshot.data!.length,
+                        itemBuilder: (context, index) {
+                          return Center(
+                            child: Text(
+                              snapshot.data![index].secret,
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          );
+                        })
+                    : CircularProgressIndicator();
+              },
             ),
-            Text(
-              '아무비밀이나 말해보세요!',
-              style: TextStyle(color: Colors.white),
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            Text(
-              '작성자: 김진욱',
-              style: TextStyle(color: Colors.white),
-            ),
-          ],
-        ),
-      ),
+          )),
     );
   }
 }

@@ -27,16 +27,26 @@ class MyListTile extends StatelessWidget {
                 'https://cdn-icons-png.flaticon.com/512/1357/1357642.png'),
             iconSize: 32,
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return SecretPage();
-                  },
-                ),
-              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //     builder: (context) {
+              //       return SecretPage();
+              //     },
+              //   ),
+              // );
             },
           ),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return SecretPage();
+                },
+              ),
+            );
+          },
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
         ),
