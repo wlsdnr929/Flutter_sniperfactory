@@ -25,14 +25,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     //return MaterialApp(home: SecretPage());
     return Scaffold(
-      backgroundColor: Colors.orange[200],
+      backgroundColor: Colors.orange[300],
       body: Container(
         width: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CircleAvatar(
-              backgroundImage: AssetImage('assets/images/tiger.png'),
+              backgroundImage: AssetImage('assets/images/tiger1.png'),
               backgroundColor: Colors.white,
               radius: 56,
             ),

@@ -11,7 +11,7 @@ class MyListTile extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Card(
-        elevation: 8,
+        elevation: 16,
         child: ListTile(
           title: Text(
             title,
@@ -39,13 +39,7 @@ class MyListTile extends StatelessWidget {
           ),
           onTap: () {
             Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) {
-                  return SecretPage();
-                },
-              ),
-            );
+                context, MaterialPageRoute(builder: (context) => SecretPage()));
           },
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
